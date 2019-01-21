@@ -4,7 +4,7 @@ function isStringExcluded(stringContent: string, excludedStrings?: StringExclusi
     } else if (typeof excludedStrings === "string") {
         return stringContent === excludedStrings
     } else if (Array.isArray(excludedStrings)) {
-        excludedStrings.indexOf(stringContent) !== -1;
+        return excludedStrings.indexOf(stringContent) !== -1;
     } else {
         return excludedStrings(stringContent);
     }
@@ -18,7 +18,23 @@ function filterStringArray(stringContents: string[], excludedStrings?: StringExc
     }
 }
 
-function getMethodNames(context: any, options: AutoBindInputContainer & AutoBindOptions = {}): string[] {
+export interface IStringExclusionFunction {
+    /** If the result is true, then the string is excluded. */
+    (stringContent: string): boolean;
+}
+
+export type AutoBindInputContainer = {
+    includeSuperMethodNames?: boolean;
+};
+
+export type StringExclusionTypes = string | string[] | IStringExclusionFunction;
+
+export type AutoBindOptions = {
+    /** If you pass a string validation function, then returning true means exclusion. */
+    excludedMethodNames?: StringExclusionTypes
+}
+
+export function getMethodNames(context: any, options: AutoBindInputContainer & AutoBindOptions = {}): string[] {
     let prototype = Object.getPrototypeOf(context);
     const methodNames: string[] = [];
 
@@ -39,22 +55,6 @@ function getMethodNames(context: any, options: AutoBindInputContainer & AutoBind
     } while (options.includeSuperMethodNames && (prototype = Object.getPrototypeOf(prototype)) && prototype !== Object.prototype);
 
     return methodNames;
-}
-
-export interface IStringExclusionFunction {
-    /** If the result is true, then the string is excluded. */
-    (stringContent: string): boolean;
-}
-
-export type AutoBindInputContainer = {
-    includeSuperMethodNames?: boolean;
-};
-
-export type StringExclusionTypes = string | string[] | IStringExclusionFunction;
-
-export type AutoBindOptions = {
-    /** If you pass a string validation function, then returning true means exclusion. */
-    excludedMethodNames?: StringExclusionTypes
 }
 
 export function autoBind(context: any, input: string | string[] | AutoBindInputContainer = {}, options: AutoBindOptions = {}): void {
