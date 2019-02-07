@@ -1,6 +1,6 @@
 {
   "name": "@teronis/ts-auto-bind-es6",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "",
   "browser": "dist/teronis-ts-auto-bind-es6.js",
   "module": "src/index.ts",
