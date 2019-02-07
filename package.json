@@ -2,7 +2,6 @@
   "name": "@teronis/ts-auto-bind-es6",
   "version": "0.0.0",
   "description": "",
-  "private": true,
   "browser": "dist/teronis-ts-auto-bind-es6.js",
   "module": "src/index.ts",
   "types": "dist/teronis-ts-auto-bind-es6.d.ts",
@@ -21,7 +20,7 @@
     "template"
   ],
   "author": "teroneko",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/teroneko/teronis-ts-auto-bind-es6/issues"
   },
