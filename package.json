@@ -1,13 +1,13 @@
 {
   "name": "@teronis/ts-auto-bind-es6",
   "version": "0.0.1",
-  "description": "",
-  "browser": "dist/teronis-ts-auto-bind-es6.js",
-  "module": "src/index.ts",
+  "description": "With this little helper you can bind methods to 'this' easier.",
+  "main": "dist/teronis-ts-auto-bind-es6.js",
+  "source": "src/index.ts",
   "types": "dist/teronis-ts-auto-bind-es6.d.ts",
   "scripts": {
-    "test": "mocha -r jsdom-global/register || true",
-    "build": "webpack || true",
+    "test": "mocha -r jsdom-global/register",
+    "build": "webpack",
     "prepublishOnly": "npm run build"
   },
   "repository": {
