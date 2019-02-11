@@ -1,6 +1,6 @@
 {
   "name": "@teronis/ts-auto-bind-es6",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "With this little helper you can bind methods to 'this' easier.",
   "main": "dist/teronis-ts-auto-bind-es6.js",
   "source": "src/index.ts",
